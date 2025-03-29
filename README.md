@@ -4,28 +4,33 @@
 
 ![](https://img.spacevim.org/record-key.png)
 
-[![](https://spacevim.org/img/build-with-SpaceVim.svg)](https://spacevim.org)
-[![GPLv3 License](https://img.spacevim.org/license-GPLv3-blue.svg)](LICENSE)
-
 <!-- vim-markdown-toc GFM -->
 
-- [Install](#install)
-- [Usage](#usage)
-- [Feedback](#feedback)
+* [Install](#install)
+* [Usage](#usage)
+* [Feedback](#feedback)
 
 <!-- vim-markdown-toc -->
 
 ## Install
 
-1. Using `record-key.nvim` in SpaceVim:
+Use your preferred Neovim plugin manager to install record-key.nvim.
 
-   This plugin is bundle with spacevim by default, and the key binding to toggle this feature is `SPC a r`
+with [nvim-plug](https://github.com/wsdjeg/nvim-plug)
 
-2. Using `record-key.nvim` without SpaceVim:
-
+```lua
+require('plug').add({
+  {
+    'wsdjeg/record-key.nvim',
+    cmds = { 'RecordKeyToggle' },
+    config_before = function()
+      vim.keymap.set('n', '<leader>rk', '<cmd>RecordKeyToggle<cr>', { silent = true })
+    end,
+  },
+})
 ```
-Plug 'wsdjeg/record-key.nvim'
-```
+
+Then use `:PlugInstall record-key.nvim` to install this plugin.
 
 ## Usage
 
@@ -33,7 +38,5 @@ Plug 'wsdjeg/record-key.nvim'
 
 ## Feedback
 
-The development of this plugin is in [`SpaceVim/bundle/record-key.nvim`](https://github.com/SpaceVim/SpaceVim/tree/master/bundle/record-key.nvim) directory.
-
-If you encounter any bugs or have suggestions, please file an issue in the [issue tracker](https://github.com/SpaceVim/SpaceVim/issues)
+If you encounter any bugs or have suggestions, please file an issue in the [issue tracker](https://github.com/wsdjeg/record-key.nvim/issues)
 
