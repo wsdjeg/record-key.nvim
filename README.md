@@ -6,13 +6,14 @@
 
 <!-- vim-markdown-toc GFM -->
 
-* [Install](#install)
+* [Installation](#installation)
 * [Usage](#usage)
+* [Debug](#debug)
 * [Feedback](#feedback)
 
 <!-- vim-markdown-toc -->
 
-## Install
+## Installation
 
 Use your preferred Neovim plugin manager to install record-key.nvim.
 
@@ -20,13 +21,13 @@ with [nvim-plug](https://github.com/wsdjeg/nvim-plug)
 
 ```lua
 require('plug').add({
-  {
-    'wsdjeg/record-key.nvim',
-    cmds = { 'RecordKeyToggle' },
-    config_before = function()
-      vim.keymap.set('n', '<leader>rk', '<cmd>RecordKeyToggle<cr>', { silent = true })
-    end,
-  },
+    {
+        'wsdjeg/record-key.nvim',
+        cmds = { 'RecordKeyToggle' },
+        config_before = function()
+            vim.keymap.set('n', '<leader>rk', '<cmd>RecordKeyToggle<cr>', { silent = true })
+        end,
+    },
 })
 ```
 
@@ -35,6 +36,27 @@ Then use `:PlugInstall record-key.nvim` to install this plugin.
 ## Usage
 
 - `:RecordKeyToggle`: toggle record-key
+
+## Debug
+
+Debug record-key.nvim with logger.nvim:
+
+```lua
+require('plug').add({
+    {
+        'wsdjeg/record-key.nvim',
+        cmds = { 'RecordKeyToggle' },
+        config_before = function()
+            vim.keymap.set('n', '<leader>rk', '<cmd>RecordKeyToggle<cr>', { silent = true })
+        end,
+        depends = {
+            {
+                'wsdjeg/logger.nvim',
+            },
+        },
+    },
+})
+```
 
 ## Feedback
 

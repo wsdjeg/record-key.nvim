@@ -6,5 +6,5 @@
 -- License: GPLv3
 --=============================================================================
 vim.api.nvim_create_user_command('RecordKeyToggle', function(_)
-  require('spacevim.plugin.record-key').toggle()
+    require('record-key').toggle()
 end, {})
