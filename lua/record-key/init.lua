@@ -50,7 +50,7 @@ local function show_key(key, where)
     vim.api.nvim_win_set_option(
         winid,
         'winhighlight',
-        'NormalFloat:Normal,FloatBorder:WinSeparator'
+        config.winhighlight
     )
     vim.fn.timer_start(config.timeout, function()
         local ei = vim.o.eventignore

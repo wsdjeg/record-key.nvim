@@ -1,6 +1,7 @@
 local default_config = {
     timeout = 3000,
     max_count = 5,
+    winhighlight = 'NormalFloat:Normal,FloatBorder:WinSeparator',
 }
 
 return {

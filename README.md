@@ -40,6 +40,7 @@ Then use `:PlugInstall record-key.nvim` to install this plugin.
 require('record-key').setup({
     timeout = 3000,
     max_count = 5,
+    winhighlight = 'NormalFloat:Normal,FloatBorder:WinSeparator',
 })
 ```
 
