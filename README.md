@@ -7,6 +7,7 @@
 <!-- vim-markdown-toc GFM -->
 
 * [Installation](#installation)
+* [Setup](#setup)
 * [Usage](#usage)
 * [Debug](#debug)
 * [Feedback](#feedback)
@@ -32,6 +33,15 @@ require('plug').add({
 ```
 
 Then use `:PlugInstall record-key.nvim` to install this plugin.
+
+## Setup
+
+```lua
+require('record-key').setup({
+    timeout = 3000,
+    max_count = 5,
+})
+```
 
 ## Usage
 

@@ -8,9 +8,7 @@
 
 local M = {}
 
-local timeout = 3000
-
-local max_count = 5
+local config
 
 local keys = {}
 
@@ -54,7 +52,7 @@ local function show_key(key, where)
         'winhighlight',
         'NormalFloat:Normal,FloatBorder:WinSeparator'
     )
-    vim.fn.timer_start(timeout, function()
+    vim.fn.timer_start(config.timeout, function()
         local ei = vim.o.eventignore
         vim.o.eventignore = 'all'
         if vim.api.nvim_win_is_valid(winid) then
@@ -77,8 +75,8 @@ local function display()
     winids = {}
     pos = 0
     logger.debug(vim.inspect(keys))
-    if #keys > max_count then
-        for i = 1, max_count, 1 do
+    if #keys > config.max_count then
+        for i = 1, config.max_count, 1 do
             show_key(keys[#keys - i + 1], pos)
             pos = pos + 1
         end
@@ -93,7 +91,7 @@ end
 local function on_key(oldkey, key)
     if not key then
         table.insert(keys, vim.fn.keytrans(oldkey))
-        vim.fn.timer_start(timeout, function()
+        vim.fn.timer_start(config.timeout, function()
             if #keys > 0 then
                 table.remove(keys, 1)
             end
@@ -105,7 +103,7 @@ local function on_key(oldkey, key)
         end
         logger.debug('   key:>' .. key .. '<')
         table.insert(keys, vim.fn.keytrans(key))
-        vim.fn.timer_start(timeout, function()
+        vim.fn.timer_start(config.timeout, function()
             if #keys > 0 then
                 table.remove(keys, 1)
             end
@@ -115,6 +113,9 @@ local function on_key(oldkey, key)
 end
 
 function M.toggle()
+    if not config then
+        M.setup()
+    end
     if enabled then
         vim.on_key(nil, ns_is)
         enabled = false
@@ -122,6 +123,10 @@ function M.toggle()
         vim.on_key(on_key, ns_is)
         enabled = true
     end
+end
+
+function M.setup(opt)
+    config = require('record-key.config').setup(opt)
 end
 
 return M
