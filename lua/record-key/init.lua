@@ -94,9 +94,12 @@ local function on_key(oldkey, key)
         end
         k = vim.fn.keytrans(key)
     end
-    if #keys > 0 and vim.fn.substitute(keys[#keys], '×\\d*$', '', 'g') == k then
-        keys[#keys] = k .. '×' .. (tonumber(string.match(keys[#keys], '%d*$') or '0') + 1)
-        vim.fn.timer_stop(time_id)
+    if #keys > 0 and vim.regex('×\\d*$'):match_str(keys[#keys]) and vim.fn.substitute(keys[#keys], '×\\d*$', '', 'g') == k then
+        pcall(vim.fn.timer_stop, time_id)
+        keys[#keys] = k .. '×' .. (tonumber(string.match(keys[#keys], '%d*$')) + 1)
+    elseif #keys > 0 and keys[#keys] == k then
+        pcall(vim.fn.timer_stop, time_id)
+        keys[#keys] = k .. '×2'
     else
         table.insert(keys, k)
     end
