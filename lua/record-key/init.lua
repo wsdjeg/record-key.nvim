@@ -47,11 +47,7 @@ local function show_key(key, where)
     vim.fn.setbufvar(buf, '&relativenumber', 0)
     vim.fn.setbufvar(buf, '&cursorline', 0)
     vim.fn.setbufvar(buf, '&bufhidden', 'wipe')
-    vim.api.nvim_win_set_option(
-        winid,
-        'winhighlight',
-        config.winhighlight
-    )
+    vim.api.nvim_win_set_option(winid, 'winhighlight', config.winhighlight)
     vim.fn.timer_start(config.timeout, function()
         local ei = vim.o.eventignore
         vim.o.eventignore = 'all'
@@ -87,29 +83,29 @@ local function display()
         end
     end
 end
-
+local time_id
 local function on_key(oldkey, key)
+    local k
     if not key then
-        table.insert(keys, vim.fn.keytrans(oldkey))
-        vim.fn.timer_start(config.timeout, function()
-            if #keys > 0 then
-                table.remove(keys, 1)
-            end
-        end, { ['repeat'] = 1 })
-        display()
+        k = vim.fn.keytrans(oldkey)
     else
         if #key == 0 then
             return
         end
-        logger.debug('   key:>' .. key .. '<')
-        table.insert(keys, vim.fn.keytrans(key))
-        vim.fn.timer_start(config.timeout, function()
-            if #keys > 0 then
-                table.remove(keys, 1)
-            end
-        end, { ['repeat'] = 1 })
-        display()
+        k = vim.fn.keytrans(key)
     end
+    if #keys > 0 and vim.fn.substitute(keys[#keys], '×\\d*$', '', 'g') == k then
+        keys[#keys] = k .. '×' .. (tonumber(string.match(keys[#keys], '%d*$') or '0') + 1)
+        vim.fn.timer_stop(time_id)
+    else
+        table.insert(keys, k)
+    end
+    time_id = vim.fn.timer_start(config.timeout, function()
+        if #keys > 0 then
+            table.remove(keys, 1)
+        end
+    end, { ['repeat'] = 1 })
+    display()
 end
 
 function M.toggle()
