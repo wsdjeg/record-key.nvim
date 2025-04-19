@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/wsdjeg/record-key.nvim/compare/v1.1.0...v1.2.0) (2025-04-19)
+
+
+### Features
+
+* add opt to change winhighlight ([3adc049](https://github.com/wsdjeg/record-key.nvim/commit/3adc04999c74021d91de6e04b331e38215da44d3))
+* new display function ([9fd5d2e](https://github.com/wsdjeg/record-key.nvim/commit/9fd5d2ef3fca14e2e9db47c0d27796fb0fd254d5))
+
 ## [1.1.0](https://github.com/wsdjeg/record-key.nvim/compare/v1.0.0...v1.1.0) (2025-04-19)
 
 
