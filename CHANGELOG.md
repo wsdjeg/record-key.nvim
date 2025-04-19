@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/wsdjeg/record-key.nvim/compare/v1.0.0...v1.1.0) (2025-04-19)
+
+
+### Features
+
+* add setup function ([25538d8](https://github.com/wsdjeg/record-key.nvim/commit/25538d8c942aa09c699f062b4a4dbc24cb995977))
+
 ## 1.0.0 (2025-03-29)
 
 
