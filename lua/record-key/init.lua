@@ -19,12 +19,13 @@ local pos = 0
 local enabled = false
 local ns_is = vim.api.nvim_create_namespace('record-key')
 local logger = require('record-key.logger')
+local util = require('record-key.util')
 
 local function show_key(key, where)
     local save_ei = vim.o.eventignore
     vim.o.eventignore = 'all'
     local buf = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { string.format('%8s', key) })
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { util.fill_middle(key, 8) })
 
     local w = 8
 
