@@ -110,6 +110,8 @@ local function on_key(oldkey, key)
         end
     end, { ['repeat'] = 1 })
     display()
+    -- @fixme key windows does not update in cmdline mode
+    vim.cmd.redraw()
 end
 
 function M.toggle()
