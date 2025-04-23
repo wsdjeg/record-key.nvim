@@ -49,6 +49,7 @@ local function show_key(key, where)
     vim.fn.setbufvar(buf, '&cursorline', 0)
     vim.fn.setbufvar(buf, '&bufhidden', 'wipe')
     vim.api.nvim_win_set_option(winid, 'winhighlight', config.winhighlight)
+    vim.api.nvim_set_option_value('signcolumn', 'no', {win = winid})
     vim.fn.timer_start(config.timeout, function()
         local ei = vim.o.eventignore
         vim.o.eventignore = 'all'
