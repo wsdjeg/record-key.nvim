@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/wsdjeg/record-key.nvim/compare/v1.2.0...v1.3.0) (2025-09-21)
+
+
+### Features
+
+* use fill_middle to display key ([03c02d0](https://github.com/wsdjeg/record-key.nvim/commit/03c02d0c171a47387cb6ba825117a723bcf03489))
+
+
+### Bug Fixes
+
+* disable signcolumn opt ([a941d43](https://github.com/wsdjeg/record-key.nvim/commit/a941d43a57a48ee27b875d7907fcf352036e996f))
+* redraw windows ([073cfaf](https://github.com/wsdjeg/record-key.nvim/commit/073cfafd2573d9fc793d1dd5ae62bdf75cf0061c))
+
 ## [1.2.0](https://github.com/wsdjeg/record-key.nvim/compare/v1.1.0...v1.2.0) (2025-04-19)
 
 
