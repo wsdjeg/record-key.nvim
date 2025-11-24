@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/wsdjeg/record-key.nvim/compare/v1.3.0...v1.4.0) (2025-11-24)
+
+
+### Features
+
+* add luarocks ([89453d8](https://github.com/wsdjeg/record-key.nvim/commit/89453d89e0807f4538a4b6069afdc22ffb128e15))
+
 ## [1.3.0](https://github.com/wsdjeg/record-key.nvim/compare/v1.2.0...v1.3.0) (2025-09-21)
 
 
